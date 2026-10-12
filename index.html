@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>明日训练卡 · 10-13 背部日</title>
+<style>
+  :root{
+    --bg:#101418; --card:#1a2027; --card2:#222b34; --text:#eef2f6; --muted:#9aa7b4;
+    --accent:#4ade80; --accent-dim:rgba(74,222,128,.14); --warn:#fbbf24; --line:#2b3540;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:15px; line-height:1.65; padding-bottom:40px;}
+  .wrap{max-width:640px; margin:0 auto; padding:14px 14px 0;}
+  .hero{background:linear-gradient(135deg,#16241b,#1a2027); border:1px solid var(--line);
+    border-radius:16px; padding:18px 16px; margin-bottom:12px;}
+  .hero .date{font-size:13px; color:var(--muted);}
+  .hero h1{margin:4px 0 6px; font-size:24px;}
+  .hero .countdown{font-size:13px; color:var(--accent);}
+  .goal{background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:12px 14px; margin-bottom:12px; font-size:13.5px; color:var(--muted);}
+  .goal b{color:var(--text);}
+  .progress{position:sticky; top:0; z-index:10; background:rgba(16,20,24,.96);
+    border-bottom:1px solid var(--line); padding:10px 14px; margin:0 -14px 12px;
+    display:flex; align-items:center; gap:10px; font-size:13px;}
+  .bar{flex:1; height:8px; background:var(--card2); border-radius:99px; overflow:hidden;}
+  .bar i{display:block; height:100%; width:0; background:var(--accent); border-radius:99px;
+    transition:width .25s;}
+  .step{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    margin-bottom:12px; overflow:hidden;}
+  .step-head{padding:12px 14px; display:flex; align-items:center; gap:10px;}
+  .n{flex:0 0 26px; height:26px; border-radius:50%; background:var(--accent);
+    color:#0b120d; font-weight:800; font-size:14px; display:flex;
+    align-items:center; justify-content:center;}
+  .step-head h2{margin:0; font-size:16px;}
+  .step-head .meta{margin-left:auto; font-size:12px; color:var(--accent); white-space:nowrap;}
+  .step img{width:100%; display:block; background:#0c0f12;}
+  .cues{padding:10px 14px 12px; margin:0; list-style:none; font-size:13.5px; color:var(--muted);}
+  .cues li{margin-bottom:4px; padding-left:18px; position:relative;}
+  .cues li::before{content:"▸"; position:absolute; left:2px; color:var(--accent);}
+  .cues b{color:var(--text);}
+  .sets{padding:4px 14px 14px; display:flex; flex-wrap:wrap; gap:8px;}
+  .set{flex:1 1 30%; min-width:96px; background:var(--card2); border:1px solid var(--line);
+    border-radius:10px; padding:10px 6px; text-align:center; font-size:13px;
+    cursor:pointer; user-select:none;}
+  .set.done{background:var(--accent-dim); border-color:var(--accent); color:var(--accent);}
+  .set.done::after{content:" ✓"; font-weight:800;}
+  .warn{margin:10px 14px 14px; padding:8px 12px; border-radius:10px; font-size:13px;
+    background:rgba(251,191,36,.1); border:1px solid rgba(251,191,36,.35); color:var(--warn);}
+  .foot{text-align:center; color:var(--muted); font-size:12px; margin-top:16px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="date" id="todayLine">2026年10月13日 周二</div>
+    <h1>背部日 · 拉</h1>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <div class="goal">
+    <b>2个月目标：</b>身材明显变化（recomp：体重 64–66kg，腰围↓，力量↑）<br>
+    <b>今日蛋白：</b>105–145g（每餐一拳肉，练后补20–30g）
+  </div>
+
+  <div class="progress"><span id="pText">今日完成 0/14 组</span><div class="bar"><i id="pBar"></i></div></div>
+
+  <div class="step">
+    <div class="step-head"><div class="n">1</div><h2>起床先做</h2></div>
+    <ul class="cues">
+      <li>空腹称体重，<b>正面 / 侧面 / 背面</b>照片（自然站立、同光线）</li>
+      <li>发给阿呆 → 记体测表、做起点评估</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><div class="n">2</div><h2>热身 3–5 分钟</h2></div>
+    <ul class="cues"><li>跑步机快走或椭圆机，把身体热起来再上器械</li></ul>
+  </div>
+
+  <div class="step" data-ex="lat">
+    <div class="step-head"><div class="n">3</div><h2>高位下拉</h2><span class="meta">4组 × 10–12次</span></div>
+    <img src="https://i.pinimg.com/originals/3c/56/bd/3c56bd69292e8680478a2cf0ef14791b.png" alt="高位下拉" loading="lazy">
+    <ul class="cues">
+      <li>从 <b>30kg 插片</b>试起，找到能标准做满 10–12 次的重量，记下来当基准</li>
+      <li>握距<b>略宽于肩</b>，杆拉到<b>锁骨 / 上胸</b></li>
+      <li>身体可微微后仰，<b>别大幅摇摆借力</b>；放回时手臂充分伸展</li>
+    </ul>
+    <div class="sets" data-sets="4"></div>
+  </div>
+
+  <div class="step" data-ex="row">
+    <div class="step-head"><div class="n">4</div><h2>坐姿划船</h2><span class="meta">3组 × 10–12次</span></div>
+    <img src="https://i.pinimg.com/originals/fa/34/22/fa342278cdd5cfb6f04214902f535f9c.jpg" alt="坐姿划船" loading="lazy">
+    <ul class="cues">
+      <li>坐稳踩实，<b>背全程挺直</b>，把手拉到<b>腹部</b></li>
+      <li>拉到顶<b>肩胛后缩夹紧停 1 秒</b>再慢慢送回</li>
+      <li>别弓背、别用腰往前倾借力</li>
+    </ul>
+    <div class="sets" data-sets="3"></div>
+  </div>
+
+  <div class="step" data-ex="hyper">
+    <div class="step-head"><div class="n">5</div><h2>罗马椅山羊挺身</h2><span class="meta">3组 × 12–15次</span></div>
+    <img src="https://www.sfd.pl/SFD/articles/main/2023/8/25/bigae62140c30a84fce8325ff90af11fef6.webp" alt="山羊挺身" loading="lazy">
+    <ul class="cues">
+      <li>自重即可，身体慢速下放到<b>接近与地面平行</b></li>
+      <li>起身到<b>身体成一条直线就停</b>，别过度后仰</li>
+      <li>全程<b>收紧核心</b>，用下背和臀发力</li>
+    </ul>
+    <div class="sets" data-sets="3"></div>
+  </div>
+
+  <div class="step" data-ex="fly">
+    <div class="step-head"><div class="n">6</div><h2>蝴蝶机反向飞鸟</h2><span class="meta">2组 × 12–15次</span></div>
+    <img src="https://gymbot.ru/images/68721e6c2e793_reverse-pec-dec-machine.gif" alt="反向飞鸟" loading="lazy">
+    <ul class="cues">
+      <li>座椅调到<b>把手与肩同高</b>，胸口贴紧靠垫</li>
+      <li>手臂<b>微屈</b>向后打开到与身体成一条线</li>
+      <li><b>重量要轻、别耸肩</b>，用后肩发力</li>
+    </ul>
+    <div class="sets" data-sets="2"></div>
+  </div>
+
+  <div class="step" data-ex="plank">
+    <div class="step-head"><div class="n">7</div><h2>平板支撑收尾</h2><span class="meta">2组 × 30–45秒</span></div>
+    <img src="https://stellar-uploads.s3.amazonaws.com/uploads/2015/09/Plank.jpg" alt="平板支撑" loading="lazy">
+    <ul class="cues">
+      <li>头到脚跟<b>一条直线</b>，收腹、夹紧屁股</li>
+      <li><b>别塌腰</b>也别撅屁股，保持呼吸别憋气</li>
+    </ul>
+    <div class="sets" data-sets="2"></div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><div class="n">8</div><h2>练后 &amp; 回传</h2></div>
+    <ul class="cues">
+      <li>练后 <b>30–60 分钟</b>补 20–30g 蛋白（鸡蛋 / 牛奶 / 鸡胸肉）</li>
+      <li>回来报阿呆：<b>动作 / 重量 / 次数</b>（精确到组）→ 记 Notion</li>
+    </ul>
+    <div class="warn">红线：关节刺痛立刻停。肌肉酸没事，关节痛不行。</div>
+  </div>
+
+  <div class="foot">组间休息 60–90 秒 · 绳索器械记插片总重<br>阿呆健身教练 · 每天自动更新</div>
+</div>
+
+<script>
+(function(){
+  var KEY='tt-2026-10-13', state={};
+  try{ state=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ state={}; }
+  var total=0;
+  document.querySelectorAll('.sets').forEach(function(box){
+    var ex=box.closest('.step').dataset.ex, n=parseInt(box.dataset.sets,10);
+    for(var i=1;i<=n;i++){
+      total++;
+      (function(ex,i){
+        var d=document.createElement('div');
+        d.className='set'+(state[ex+':'+i]?' done':'');
+        d.textContent='第'+i+'组';
+        d.onclick=function(){
+          var k=ex+':'+i; state[k]=!state[k];
+          d.classList.toggle('done',state[k]);
+          try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}
+          render();
+        };
+        box.appendChild(d);
+      })(ex,i);
+    }
+  });
+  function render(){
+    var done=0; for(var k in state){ if(state[k]) done++; }
+    document.getElementById('pText').textContent='今日完成 '+done+'/'+total+' 组';
+    document.getElementById('pBar').style.width=(total?done/total*100:0)+'%';
+  }
+  render();
+  var end=new Date(2026,11,12), now=new Date();
+  var days=Math.max(0,Math.ceil((end-now)/864e5));
+  document.getElementById('countdown').textContent='距 12-12 目标还有 '+days+' 天';
+})();
+</script>
+</body>
+</html>
