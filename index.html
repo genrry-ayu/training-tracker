@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>训练卡 · 10-14 休息日</title>
+<title>训练卡 · 10-15 腿日</title>
 <style>
   :root{
     --bg:#101418; --card:#1a2027; --card2:#222b34; --text:#eef2f6; --muted:#9aa7b4;
@@ -19,9 +19,15 @@
   .hero .date{font-size:13px; color:var(--muted);}
   .hero h1{margin:4px 0 6px; font-size:24px;}
   .hero .countdown{font-size:13px; color:var(--accent);}
+  .progress{height:8px; background:var(--card2); border-radius:4px; margin-top:10px; overflow:hidden;}
+  .progress i{display:block; height:100%; width:0; background:var(--accent); border-radius:4px; transition:width .3s;}
+  .progress-label{font-size:12px; color:var(--muted); margin-top:4px;}
   .goal{background:var(--card); border:1px solid var(--line); border-radius:12px;
     padding:12px 14px; margin-bottom:12px; font-size:13.5px; color:var(--muted);}
   .goal b{color:var(--text);}
+  .notice{background:rgba(251,191,36,.08); border:1px solid rgba(251,191,36,.35); border-radius:12px;
+    padding:12px 14px; margin-bottom:12px; font-size:13.5px; color:var(--warn);}
+  .notice b{color:var(--warn);}
   .step{background:var(--card); border:1px solid var(--line); border-radius:14px;
     margin-bottom:12px; overflow:hidden;}
   .step-head{padding:12px 14px; display:flex; align-items:center; gap:10px;}
@@ -30,10 +36,18 @@
     align-items:center; justify-content:center;}
   .step-head h2{margin:0; font-size:16px;}
   .step-head .meta{margin-left:auto; font-size:12px; color:var(--accent); white-space:nowrap;}
-  .cues{padding:10px 14px 12px; margin:0; list-style:none; font-size:13.5px; color:var(--muted);}
+  .demo{display:block; width:100%; max-height:220px; object-fit:contain; background:#0c1014;}
+  .cues{padding:10px 14px 6px; margin:0; list-style:none; font-size:13.5px; color:var(--muted);}
   .cues li{margin-bottom:4px; padding-left:18px; position:relative;}
   .cues li::before{content:"▸"; position:absolute; left:2px; color:var(--accent);}
   .cues b{color:var(--text);}
+  .sets{padding:4px 14px 14px;}
+  .set{display:flex; align-items:center; gap:10px; padding:9px 0; border-top:1px solid var(--line);
+    font-size:14px; cursor:pointer; user-select:none;}
+  .set:first-child{border-top:none;}
+  .set input{width:20px; height:20px; accent-color:var(--accent); flex:0 0 20px;}
+  .set.done span{color:var(--muted); text-decoration:line-through;}
+  .set .w{margin-left:auto; color:var(--accent); font-weight:700; white-space:nowrap;}
   .foot{text-align:center; color:var(--muted); font-size:12px; margin-top:16px;}
 </style>
 </head>
@@ -41,49 +55,96 @@
 <div class="wrap">
 
   <div class="hero">
-    <div class="date">2026年10月14日 周三</div>
-    <h1>今日休息 · 恢复日</h1>
+    <div class="date">2026年10月15日 周四</div>
+    <h1>🦵 腿日 · 第一次</h1>
     <div class="countdown" id="countdown"></div>
+    <div class="progress"><i id="bar"></i></div>
+    <div class="progress-label" id="plabel">完成 0 / 14 组</div>
   </div>
 
   <div class="goal">
     <b>2个月目标：</b>身材明显变化（recomp：体重 64–66kg，腰围↓，力量↑）<br>
-    <b>今日蛋白：</b>105–145g（每餐一拳肉）
+    <b>今日蛋白：</b>105–145g（每餐一拳肉）<br>
+    <b>今日目标：</b>首次腿部日，把动作摸准；每个动作从低档起步，记下真实反馈
+  </div>
+
+  <div class="notice">
+    <b>⚠️ 腿部器械还没核验</b><br>
+    今天先用哑铃保底方案。去健身房把腿部器械拍一圈发给阿呆（带铭牌），下次按真实器械校准计划。
   </div>
 
   <div class="step">
-    <div class="step-head"><div class="n">1</div><h2>肌肉是休息时长出来的</h2></div>
+    <div class="step-head"><div class="n">1</div><h2>高脚杯深蹲</h2><span class="meta">股四头 · 臀</span></div>
+    <img class="demo" src="https://cdn2.hubspot.net/hub/349216/file-2504867879-jpg/Images/goblet-squat.jpg" alt="高脚杯深蹲">
     <ul class="cues">
-      <li>昨天背部日的肌肉今天在修复，<b>别加练</b>，别去健身房"随便练练"</li>
-      <li>同一块肌肉 48 小时内不练第二次——这是铁律</li>
+      <li>双手托住哑铃一端置于胸前，挺胸、<b>膝盖与脚尖同向</b></li>
+      <li>下蹲到<b>大腿与地面平行</b>后再起</li>
+      <li>重量按<b>单只</b>计；今天是首次腿日，从 10kg 起步摸基准</li>
     </ul>
+    <div class="sets" data-ex="goblet">
+      <label class="set"><input type="checkbox"><span>第 1 组</span><span class="w">10kg × 12</span></label>
+      <label class="set"><input type="checkbox"><span>第 2 组</span><span class="w">10kg × 12</span></label>
+      <label class="set"><input type="checkbox"><span>第 3 组</span><span class="w">10kg × 12</span></label>
+    </div>
   </div>
 
   <div class="step">
-    <div class="step-head"><div class="n">2</div><h2>轻度活动 20–30 分钟</h2><span class="meta">二选一</span></div>
+    <div class="step-head"><div class="n">2</div><h2>哑铃罗马尼亚硬拉</h2><span class="meta">臀 · 腘绳肌</span></div>
+    <img class="demo" src="https://2d93f66b-714b6bd10aefc79aa686acff6.pages.mailchi.mp.f45training.com/wp-content/uploads/2023/07/Untitled-design-68.png" alt="哑铃罗马尼亚硬拉">
     <ul class="cues">
-      <li><b>散步</b> 20–30 分钟，促进血液循环、加速恢复</li>
-      <li>或 <b>全身拉伸</b> 10–15 分钟，重点拉昨天练到的背和手臂</li>
-      <li>强度标准：微微出汗、能正常说话，不喘</li>
+      <li>双手各持一只哑铃，<b>屈髋下放、膝盖微屈</b>，感觉大腿后侧被拉长</li>
+      <li><b>腰背全程挺直</b>，不要弓腰</li>
+      <li>重量按<b>单只</b>计</li>
     </ul>
+    <div class="sets" data-ex="rdl">
+      <label class="set"><input type="checkbox"><span>第 1 组</span><span class="w">10kg × 12</span></label>
+      <label class="set"><input type="checkbox"><span>第 2 组</span><span class="w">10kg × 12</span></label>
+      <label class="set"><input type="checkbox"><span>第 3 组</span><span class="w">10kg × 12</span></label>
+    </div>
   </div>
 
   <div class="step">
-    <div class="step-head"><div class="n">3</div><h2>平板支撑收尾</h2><span class="meta">2组 × 45秒</span></div>
+    <div class="step-head"><div class="n">3</div><h2>哑铃后撤箭步蹲</h2><span class="meta">股四头 · 臀</span></div>
+    <img class="demo" src="https://tarzanweb.jp/uploads/2021/07/15/005-7-w1280.jpg" alt="哑铃后撤箭步蹲">
+    <ul class="cues">
+      <li>双手持哑铃自然下垂，一条腿<b>向后撤一步</b>，下蹲到前腿大腿与地面平行</li>
+      <li>躯干保持正直<b>不要前倾</b></li>
+      <li>重量按<b>单只</b>计</li>
+    </ul>
+    <div class="sets" data-ex="lunge">
+      <label class="set"><input type="checkbox"><span>第 1 组（每腿）</span><span class="w">7.5kg × 10</span></label>
+      <label class="set"><input type="checkbox"><span>第 2 组（每腿）</span><span class="w">7.5kg × 10</span></label>
+      <label class="set"><input type="checkbox"><span>第 3 组（每腿）</span><span class="w">7.5kg × 10</span></label>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><div class="n">4</div><h2>山羊挺身（罗马椅）</h2><span class="meta">下背 · 臀</span></div>
+    <img class="demo" src="https://www.sfd.pl/SFD/articles/main/2023/8/25/bigae62140c30a84fce8325ff90af11fef6.webp" alt="山羊挺身">
+    <ul class="cues">
+      <li>双脚固定、髋部抵住垫沿，身体前屈到<b>与地面平行</b>再抬起</li>
+      <li>顶端<b>夹紧臀部</b></li>
+      <li>自重；10-13 做过 15 × 3，今天目标稳住 15 次</li>
+    </ul>
+    <div class="sets" data-ex="backext">
+      <label class="set"><input type="checkbox"><span>第 1 组</span><span class="w">自重 × 15</span></label>
+      <label class="set"><input type="checkbox"><span>第 2 组</span><span class="w">自重 × 15</span></label>
+      <label class="set"><input type="checkbox"><span>第 3 组</span><span class="w">自重 × 15</span></label>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head"><div class="n">5</div><h2>平板支撑收尾</h2><span class="meta">核心</span></div>
+    <img class="demo" src="https://stellar-uploads.s3.amazonaws.com/uploads/2015/09/Plank.jpg" alt="平板支撑">
     <ul class="cues">
       <li>头到脚跟<b>一条直线</b>，收腹、夹紧屁股</li>
       <li><b>别塌腰</b>也别撅屁股，保持呼吸别憋气</li>
-      <li>核心是每天固定收尾，休息日也不断</li>
+      <li>若 60 秒 × 2 仍轻松，下次上交替抬腿平板支撑</li>
     </ul>
-  </div>
-
-  <div class="step">
-    <div class="step-head"><div class="n">4</div><h2>明日预告 · 腿日</h2><span class="meta">周四</span></div>
-    <ul class="cues">
-      <li>明早 06:10 训练卡更新为腿日计划</li>
-      <li>今晚把健身房<b>腿部器械拍一圈</b>发给阿呆（带铭牌最好），按真实器械校准计划</li>
-      <li>今晚早点睡，腿日消耗大</li>
-    </ul>
+    <div class="sets" data-ex="plank">
+      <label class="set"><input type="checkbox"><span>第 1 组</span><span class="w">60 秒</span></label>
+      <label class="set"><input type="checkbox"><span>第 2 组</span><span class="w">60 秒</span></label>
+    </div>
   </div>
 
   <div class="foot">阿呆健身教练 · 每天自动更新</div>
@@ -91,9 +152,33 @@
 
 <script>
 (function(){
+  var KEY='tt-2026-10-15';
   var end=new Date(2026,11,12), now=new Date();
   var days=Math.max(0,Math.ceil((end-now)/864e5));
   document.getElementById('countdown').textContent='距 12-12 目标还有 '+days+' 天';
+  var boxes=[].slice.call(document.querySelectorAll('.set input'));
+  var total=boxes.length;
+  var saved={};
+  try{ saved=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+  function paint(){
+    var done=0;
+    boxes.forEach(function(b,i){
+      var on=!!saved[i];
+      b.checked=on;
+      b.closest('.set').classList.toggle('done',on);
+      if(on)done++;
+    });
+    document.getElementById('bar').style.width=(total?done/total*100:0)+'%';
+    document.getElementById('plabel').textContent='完成 '+done+' / '+total+' 组';
+  }
+  boxes.forEach(function(b,i){
+    b.addEventListener('change',function(){
+      saved[i]=b.checked;
+      try{ localStorage.setItem(KEY,JSON.stringify(saved)); }catch(e){}
+      paint();
+    });
+  });
+  paint();
 })();
 </script>
 </body>
