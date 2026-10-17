@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>训练卡 · 10-17 推日（家里版）</title>
+<title>训练卡 · 10-18 推日（家里版）</title>
 <style>
   :root{
     --bg:#000000;
@@ -84,25 +84,25 @@
 
   <div class="banner" id="goal">
     <span class="dot">◉</span>
-    <span>今日目标：侧束优先，家里推日第一课——把侧平举做标准</span>
+    <span>今日目标：补上昨天的推日——侧束优先，把侧平举做标准</span>
   </div>
 
   <div class="title-row">
-    <h2>October 17, Saturday</h2>
+    <h2>October 18, Sunday</h2>
   </div>
 
   <div class="metrics" id="metrics">
     <div class="metric">
       <div class="lab">倒计时</div>
-      <div class="val"><span id="dday">56</span><small>天</small></div>
+      <div class="val"><span id="dday">55</span><small>天</small></div>
       <div class="val-sub">12月12日</div>
     </div>
     <div class="metric">
       <div class="lab">近4次训练 · 动态消耗 kcal</div>
-      <div class="bars" role="img" aria-label="近4次训练动态消耗：10月12日推260千卡，10月13日拉361千卡，10月14日休息散步56千卡，10月15日腿420千卡">
-        <i style="height:62%" title="10-12 推 · 260kcal"></i><i style="height:86%" title="10-13 拉 · 361kcal"></i><i style="height:13%" title="10-14 休息散步 · 56kcal"></i><i class="on" style="height:100%" title="10-15 腿 · 420kcal"></i>
+      <div class="bars" role="img" aria-label="近4次训练动态消耗：10月13日拉361千卡，10月14日休息散步56千卡，10月15日腿420千卡，10月17日漏练">
+        <i style="height:86%" title="10-13 拉 · 361kcal"></i><i style="height:13%" title="10-14 休息散步 · 56kcal"></i><i style="height:100%" title="10-15 腿 · 420kcal"></i><i class="on" style="height:13%" title="10-17 漏练 · 0kcal"></i>
       </div>
-      <div class="bars-lab"><span>12推</span><span>13拉</span><span>14休</span><span>15腿</span></div>
+      <div class="bars-lab"><span>13拉</span><span>14休</span><span>15腿</span><span>17漏</span></div>
     </div>
   </div>
 
@@ -224,7 +224,7 @@
 
 <script>
 (function(){
-  var KEY='tt-2026-10-17';
+  var KEY='tt-2026-10-18';
   var end=new Date(2026,11,12), now=new Date();
   var days=Math.max(0,Math.ceil((end-now)/864e5));
   document.getElementById('dday').textContent=days;
