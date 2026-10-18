@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>训练卡 · 10-18 推日（家里版）</title>
+<title>训练卡 · 10-19 休息日</title>
 <style>
   :root{
     --bg:#000000;
@@ -26,6 +26,8 @@
     font-size:15px; line-height:1.6;
   }
   .wrap{max-width:480px; margin:0 auto; padding:10px 14px 30px;}
+
+  /* —— 绿色胶囊提醒 —— */
   .banner{
     margin:14px 0 4px; background:var(--lime-dim); border-radius:999px;
     padding:13px 18px; color:var(--lime); font-size:14px; font-weight:600;
@@ -33,9 +35,13 @@
   }
   .banner .dot{width:22px; height:22px; border-radius:50%; background:var(--lime);
     color:#0c1206; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:0 0 22px;}
+
+  /* —— 大标题行 —— */
   .title-row{display:flex; align-items:baseline; justify-content:space-between; margin:24px 4px 14px;}
   .title-row h2{margin:0; font-size:29px; font-weight:800; letter-spacing:.3px;}
   .title-row .date{font-size:13px; color:var(--muted);}
+
+  /* —— 指标双卡 —— */
   .metrics{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
   .metric{background:var(--card); border-radius:var(--r); padding:18px 18px 16px;}
   .metric .lab{font-size:13px; color:var(--muted); margin-bottom:8px;}
@@ -43,29 +49,21 @@
   .metric .val small{font-size:13px; font-weight:500; color:var(--muted); margin-left:6px;}
   .metric .val-sub{font-size:13px; color:var(--muted); margin-top:4px;}
   .metric.lime .val{color:var(--lime);}
+  .metric.wide{grid-column:1 / -1; margin-top:12px;}
   .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
   .bars i{flex:1; border-radius:3px; background:#2c2c31; min-height:7px;}
   .bars i.on{background:var(--lime);}
   .bars-lab{display:flex; gap:6px; margin-top:5px;}
   .bars-lab span{flex:1; text-align:center; font-size:11px; color:var(--muted);}
   .bars-lab span:last-child{color:var(--lime); font-weight:700;}
-  .home-tag{display:inline-block; margin:18px 0 2px; background:var(--lime-dim); color:var(--lime);
-    font-size:13px; font-weight:700; border-radius:999px; padding:7px 14px;}
+
+  /* —— 待办卡（复用动作卡样式） —— */
   .ex{background:var(--card); border-radius:var(--r); padding:18px; margin-bottom:12px;}
   .ex-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
   .ex .kicker{font-size:13px; color:var(--muted);}
   .ex .idx{width:38px; height:38px; border-radius:50%; background:var(--card2); flex:0 0 38px;
     display:flex; align-items:center; justify-content:center; color:var(--lime); font-weight:800; font-size:15px;}
   .ex h3{margin:6px 0 2px; font-size:22px; font-weight:800; letter-spacing:.3px;}
-  .ex .target{color:var(--lime); font-weight:700; font-size:15px;}
-  .ex img.demo{display:block; width:100%; height:190px; object-fit:cover; filter:brightness(.94);}
-  .demo-wrap{position:relative; border-radius:18px; overflow:hidden; margin:14px 0 4px; background:#0b0b0d;}
-  .demo-wrap::after{content:""; position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(120% 95% at 50% 42%, transparent 55%, rgba(0,0,0,.52) 100%);}
-  .cues{list-style:none; margin:8px 0 4px; padding:0; font-size:13.5px; color:var(--muted);}
-  .cues li{margin:7px 0; padding-left:20px; position:relative;}
-  .cues li::before{content:"▸"; position:absolute; left:3px; color:var(--lime); font-weight:800;}
-  .cues b{color:var(--text); font-weight:600;}
   .set{display:flex; align-items:center; gap:12px; padding:13px 2px; border-top:1px solid var(--hair); cursor:pointer; user-select:none;}
   .set input{appearance:none; -webkit-appearance:none; width:24px; height:24px; border-radius:9px;
     border:2px solid #3d3d44; background:transparent; margin:0; flex:0 0 24px; cursor:pointer; position:relative;}
@@ -76,7 +74,15 @@
   .set .w{margin-left:auto; color:var(--lime); font-weight:800; font-size:15px; white-space:nowrap;}
   .set.done{opacity:.42;}
   .set.done .sname{text-decoration:line-through;}
+
+  /* —— 粉色提醒卡（明日预告） —— */
+  .alert{background:var(--pink-dim); border-radius:var(--r); padding:18px; margin-bottom:12px;}
+  .alert .lab{font-size:13px; color:var(--pink); font-weight:700; margin-bottom:8px;}
+  .alert p{margin:0; font-size:14.5px; line-height:1.7; color:#f2d7dc;}
+  .alert b{color:#fff;}
+
   .foot{text-align:center; color:var(--muted); font-size:12px; margin:20px 0 8px;}
+
 </style>
 </head>
 <body>
@@ -84,138 +90,54 @@
 
   <div class="banner" id="goal">
     <span class="dot">◉</span>
-    <span>今日目标：补上昨天的推日——侧束优先，把侧平举做标准</span>
+    <span>今日休息，好好恢复</span>
   </div>
 
   <div class="title-row">
-    <h2>October 18, Sunday</h2>
+    <h2>October 19, Monday</h2>
   </div>
 
   <div class="metrics" id="metrics">
     <div class="metric">
       <div class="lab">倒计时</div>
-      <div class="val"><span id="dday">55</span><small>天</small></div>
+      <div class="val"><span id="dday">54</span><small>天</small></div>
       <div class="val-sub">12月12日</div>
     </div>
-    <div class="metric">
-      <div class="lab">近4次训练 · 动态消耗 kcal</div>
-      <div class="bars" role="img" aria-label="近4次训练动态消耗：10月13日拉361千卡，10月14日休息散步56千卡，10月15日腿420千卡，10月17日漏练">
-        <i style="height:86%" title="10-13 拉 · 361kcal"></i><i style="height:13%" title="10-14 休息散步 · 56kcal"></i><i style="height:100%" title="10-15 腿 · 420kcal"></i><i class="on" style="height:13%" title="10-17 漏练 · 0kcal"></i>
-      </div>
-      <div class="bars-lab"><span>13拉</span><span>14休</span><span>15腿</span><span>17漏</span></div>
+    <div class="metric lime">
+      <div class="lab">今日恢复目标</div>
+      <div class="val" style="font-size:20px; line-height:1.5;">散步 30 分钟</div>
+      <div class="val-sub">蛋白 105–145g</div>
     </div>
   </div>
 
-  <span class="home-tag">🏠 家里哑铃 + 自重版 · 周末不去健身房</span>
-
-  <div class="title-row" id="exercises">
-    <h2>6 Exercises</h2>
+  <div class="metric wide">
+    <div class="lab">近4次训练 · 动态消耗 kcal</div>
+    <div class="bars" role="img" aria-label="近4次动态消耗：10月14日休息散步56千卡，10月15日腿日420千卡，10月17日漏练，10月18日漏练">
+      <i style="height:13%" title="10-14 休息散步 · 56kcal"></i><i style="height:100%" title="10-15 腿 · 420kcal"></i><i style="height:13%" title="10-17 漏练"></i><i class="on" style="height:13%" title="10-18 漏练"></i>
+    </div>
+    <div class="bars-lab"><span>14休</span><span>15腿</span><span>17漏</span><span>18漏</span></div>
   </div>
 
-  <div class="ex">
-    <div class="ex-top">
-      <div class="kicker">动作 01 · 三角肌侧束（最先做）</div>
-      <div class="idx">01</div>
-    </div>
-    <h3>站姿哑铃侧平举</h3>
-    <div class="target">5kg × 12次 × 3组</div>
-    <div class="demo-wrap"><img class="demo" src="https://static.strengthlevel.com/images/exercises/dumbbell-lateral-raise/howto/dumbbell-lateral-raise-howto-2-800.jpg" alt="站姿哑铃侧平举"></div>
-    <ul class="cues">
-      <li>双脚与肩同宽站立，双手各持一只哑铃垂于体侧，<b>先沉肩</b></li>
-      <li>向两侧平举到<b>与肩同高即停</b>，不要耸肩、不要甩身体</li>
-      <li>举不起来的重量就减重，5kg 起步；重量按<b>单只</b>计</li>
-    </ul>
-    <label class="set"><input type="checkbox"><span class="sname">第 1 组</span><span class="w">5kg × 12</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 2 组</span><span class="w">5kg × 12</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 3 组</span><span class="w">5kg × 12</span></label>
+  <div class="title-row" id="todo">
+    <h2>今日待办</h2>
   </div>
 
   <div class="ex">
     <div class="ex-top">
-      <div class="kicker">动作 02 · 三角肌前束 / 整体厚度</div>
-      <div class="idx">02</div>
+      <div class="kicker">恢复待办 · 今天不练器械</div>
+      <div class="idx">休</div>
     </div>
-    <h3>站姿哑铃肩推</h3>
-    <div class="target">7.5kg × 10次 × 3组</div>
-    <div class="demo-wrap"><img class="demo" src="https://hitmymacros.com/wp-content/uploads/2022/09/overhead-dumbbell-press.jpeg" alt="站姿哑铃肩推"></div>
-    <ul class="cues">
-      <li>双手持哑铃举至肩部，掌心相对或向前</li>
-      <li>垂直上推到手臂接近伸直（肘别锁死），<b>慢速下放</b></li>
-      <li><b>核心收紧、别塌腰</b>；重量按<b>单只</b>计</li>
-    </ul>
-    <label class="set"><input type="checkbox"><span class="sname">第 1 组</span><span class="w">7.5kg × 10</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 2 组</span><span class="w">7.5kg × 10</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 3 组</span><span class="w">7.5kg × 10</span></label>
+    <h3>肌肉是在休息时长的</h3>
+    <label class="set"><input type="checkbox"><span class="sname">散步或轻松活动</span><span class="w">20–30 分钟</span></label>
+    <label class="set"><input type="checkbox"><span class="sname">平板支撑</span><span class="w">60秒 × 2</span></label>
+    <label class="set"><input type="checkbox"><span class="sname">蛋白吃够</span><span class="w">105–145g</span></label>
+    <label class="set"><input type="checkbox"><span class="sname">23 点前睡觉</span><span class="w">😴</span></label>
   </div>
 
-  <div class="ex">
-    <div class="ex-top">
-      <div class="kicker">动作 03 · 胸大肌</div>
-      <div class="idx">03</div>
-    </div>
-    <h3>哑铃地板卧推</h3>
-    <div class="target">12.5kg × 12次 × 3组</div>
-    <div class="demo-wrap"><img class="demo" src="https://www.endomondo.com/wp-content/uploads/2024/09/Dumbbell-Floor-Press-endomondo.jpg" alt="哑铃地板卧推"></div>
-    <ul class="cues">
-      <li>平躺地板、双膝屈起，双手持哑铃置于胸两侧</li>
-      <li>上推到手臂伸直，<b>下放时上臂贴地即停</b>（保护肩关节）</li>
-      <li>12.5kg 是你 10-12 在健身房的实测重量；重量按<b>单只</b>计</li>
-    </ul>
-    <label class="set"><input type="checkbox"><span class="sname">第 1 组</span><span class="w">12.5kg × 12</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 2 组</span><span class="w">12.5kg × 12</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 3 组</span><span class="w">12.5kg × 12</span></label>
-  </div>
-
-  <div class="ex">
-    <div class="ex-top">
-      <div class="kicker">动作 04 · 胸大肌（拉伸感）</div>
-      <div class="idx">04</div>
-    </div>
-    <h3>哑铃仰卧飞鸟</h3>
-    <div class="target">7.5kg × 12次 × 2组</div>
-    <div class="demo-wrap"><img class="demo" src="https://nfpt.com/wp-content/uploads/2025/12/37136161_s.jpg" alt="哑铃仰卧飞鸟"></div>
-    <ul class="cues">
-      <li>平躺，双臂微屈、持哑铃在胸前上方</li>
-      <li>向两侧缓慢打开到<b>胸部有拉伸感</b>，再合拢</li>
-      <li>别用手腕借力；重量按<b>单只</b>计</li>
-    </ul>
-    <label class="set"><input type="checkbox"><span class="sname">第 1 组</span><span class="w">7.5kg × 12</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 2 组</span><span class="w">7.5kg × 12</span></label>
-  </div>
-
-  <div class="ex">
-    <div class="ex-top">
-      <div class="kicker">动作 05 · 胸 / 三头（自重）</div>
-      <div class="idx">05</div>
-    </div>
-    <h3>俯卧撑</h3>
-    <div class="target">力竭前 2–3 次 × 3组</div>
-    <div class="demo-wrap"><img class="demo" src="https://urlife-live.s3.ap-south-1.amazonaws.com/uploads/post_image/1649850838/Push-ups-exercise.jpg" alt="俯卧撑"></div>
-    <ul class="cues">
-      <li>头到脚跟<b>一条直线</b>，收腹夹臀</li>
-      <li>下放到胸离地一拳再推起；做到<b>力竭前 2–3 次就停</b></li>
-      <li>做不动就改跪姿，保证动作质量</li>
-    </ul>
-    <label class="set"><input type="checkbox"><span class="sname">第 1 组</span><span class="w">力竭前 2–3 次</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 2 组</span><span class="w">力竭前 2–3 次</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 3 组</span><span class="w">力竭前 2–3 次</span></label>
-  </div>
-
-  <div class="ex">
-    <div class="ex-top">
-      <div class="kicker">动作 06 · 核心收尾</div>
-      <div class="idx">06</div>
-    </div>
-    <h3>平板支撑</h3>
-    <div class="target">60秒 × 2组</div>
-    <div class="demo-wrap"><img class="demo" src="https://stellar-uploads.s3.amazonaws.com/uploads/2015/09/Plank.jpg" alt="平板支撑"></div>
-    <ul class="cues">
-      <li>头到脚跟<b>一条直线</b>，收腹、夹紧屁股</li>
-      <li><b>别塌腰</b>也别撅屁股，保持呼吸别憋气</li>
-      <li>若 60 秒 × 2 仍轻松，下次上交替抬腿平板支撑</li>
-    </ul>
-    <label class="set"><input type="checkbox"><span class="sname">第 1 组</span><span class="w">60 秒</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">第 2 组</span><span class="w">60 秒</span></label>
+  <div class="alert">
+    <div class="lab">📅 明日预告 · 训练日</div>
+    <p><b>10 月 20 日（周二）· 推日（健身房版）</b></p>
+    <p>站姿哑铃侧平举 5kg×12×3 → 哑铃肩推 7.5kg×10×3 → 哑铃卧推 12.5kg×12×3 → HOIST 上斜卧推，平板收尾。</p>
   </div>
 
   <div class="foot">阿呆健身教练 · 每天自动更新</div>
@@ -224,7 +146,7 @@
 
 <script>
 (function(){
-  var KEY='tt-2026-10-18';
+  var KEY='tt-2026-10-19';
   var end=new Date(2026,11,12), now=new Date();
   var days=Math.max(0,Math.ceil((end-now)/864e5));
   document.getElementById('dday').textContent=days;
