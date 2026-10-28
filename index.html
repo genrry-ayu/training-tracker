@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>训练卡 · 10-28 养腰恢复日</title>
+<title>训练卡 · 10-29 养腰恢复日</title>
 <style>
   :root{
     --bg:#000000;
@@ -26,6 +26,8 @@
     font-size:15px; line-height:1.6;
   }
   .wrap{max-width:480px; margin:0 auto; padding:10px 14px 30px;}
+
+  /* —— 绿色胶囊提醒 —— */
   .banner{
     margin:14px 0 4px; background:var(--lime-dim); border-radius:999px;
     padding:13px 18px; color:var(--lime); font-size:14px; font-weight:600;
@@ -33,9 +35,13 @@
   }
   .banner .dot{width:22px; height:22px; border-radius:50%; background:var(--lime);
     color:#0c1206; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex:0 0 22px;}
+
+  /* —— 大标题行 —— */
   .title-row{display:flex; align-items:baseline; justify-content:space-between; margin:24px 4px 14px;}
   .title-row h2{margin:0; font-size:29px; font-weight:800; letter-spacing:.3px;}
   .title-row .date{font-size:13px; color:var(--muted);}
+
+  /* —— 指标双卡 —— */
   .metrics{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
   .metric{background:var(--card); border-radius:var(--r); padding:18px 18px 16px;}
   .metric .lab{font-size:13px; color:var(--muted); margin-bottom:8px;}
@@ -50,6 +56,8 @@
   .bars-lab{display:flex; gap:6px; margin-top:5px;}
   .bars-lab span{flex:1; text-align:center; font-size:11px; color:var(--muted);}
   .bars-lab span:last-child{color:var(--lime); font-weight:700;}
+
+  /* —— 动作卡 —— */
   .ex{background:var(--card); border-radius:var(--r); padding:18px; margin-bottom:12px;}
   .ex-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
   .ex .kicker{font-size:13px; color:var(--muted);}
@@ -57,6 +65,10 @@
     display:flex; align-items:center; justify-content:center; color:var(--lime); font-weight:800; font-size:15px;}
   .ex h3{margin:6px 0 2px; font-size:22px; font-weight:800; letter-spacing:.3px;}
   .ex .target{color:var(--lime); font-weight:700; font-size:15px;}
+  .ex img.demo{display:block; width:100%; height:190px; object-fit:cover; filter:brightness(.94);}
+  .demo-wrap{position:relative; border-radius:18px; overflow:hidden; margin:14px 0 4px; background:#0b0b0d;}
+  .demo-wrap::after{content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(120% 95% at 50% 42%, transparent 55%, rgba(0,0,0,.52) 100%);}
   .cues{list-style:none; margin:8px 0 4px; padding:0; font-size:13.5px; color:var(--muted);}
   .cues li{margin:7px 0; padding-left:20px; position:relative;}
   .cues li::before{content:"▸"; position:absolute; left:3px; color:var(--lime); font-weight:800;}
@@ -71,11 +83,15 @@
   .set .w{margin-left:auto; color:var(--lime); font-weight:800; font-size:15px; white-space:nowrap;}
   .set.done{opacity:.42;}
   .set.done .sname{text-decoration:line-through;}
+
+  /* —— 粉色提醒卡（对标截图里的心率警示卡） —— */
   .alert{background:var(--pink-dim); border-radius:var(--r); padding:18px; margin-bottom:12px;}
   .alert .lab{font-size:13px; color:var(--pink); font-weight:700; margin-bottom:8px;}
   .alert p{margin:0; font-size:14.5px; line-height:1.7; color:#f2d7dc;}
   .alert b{color:#fff;}
+
   .foot{text-align:center; color:var(--muted); font-size:12px; margin:20px 0 8px;}
+
 </style>
 </head>
 <body>
@@ -83,64 +99,66 @@
 
   <div class="banner" id="goal">
     <span class="dot">◉</span>
-    <span>今日休息，好好恢复 · 养腰恢复日</span>
+    <span>今日休息，好好恢复 · 养腰第 3 天</span>
   </div>
 
   <div class="title-row">
-    <h2>October 28, Wednesday</h2>
+    <h2>October 29, Thursday</h2>
   </div>
 
   <div class="metrics" id="metrics">
     <div class="metric">
       <div class="lab">倒计时</div>
-      <div class="val"><span id="dday">45</span><small>天</small></div>
+      <div class="val"><span id="dday">44</span><small>天</small></div>
       <div class="val-sub">12月12日</div>
     </div>
     <div class="metric">
       <div class="lab">今日恢复目标</div>
-      <div class="val">慢走多次</div>
-      <div class="val-sub">每次 5–10 分钟 · 蛋白 105–145g</div>
-    </div>
-    <div class="metric wide">
-      <div class="lab">近4次 · 动态消耗 kcal</div>
-      <div class="bars" role="img" aria-label="近4次：10月24日推日316千卡，10月25日补完未完成未记录，10月26日拉日362千卡，10月27日腿日腰伤中止未记录">
-        <i style="height:87%" title="10-24 推 · 316kcal"></i><i style="height:13%" title="10-25 补完未完成 · 未记录"></i><i style="height:100%" title="10-26 拉 · 362kcal"></i><i class="on" style="height:13%" title="10-27 腿 · 腰伤中止，未记录"></i>
-      </div>
-      <div class="bars-lab"><span>24推</span><span>25休</span><span>26拉</span><span>27伤</span></div>
+      <div class="val" style="font-size:20px; line-height:1.4;">慢走多次<br><small style="margin-left:0;">每次 5–10 分钟 · 蛋白 105–145g</small></div>
     </div>
   </div>
 
   <div class="alert">
-    <div class="lab">腰伤恢复中</div>
-    <p>🩹 10-27 腿日练哑铃罗马尼亚硬拉时腰部急性拉伤，训练已暂停。<b>原定 10-29 推日、10-30 拉日均已取消</b>，复训等主聊天通知；出现腿麻、放射痛，或一周不见好转，及时复查。</p>
+    <div class="lab">养腰节点提醒</div>
+    <p>48 小时节点在<b>今日上午约 9 时</b>：节点前冰敷，过了节点改热敷。昨晚稍弯腰仍疼得厉害——<b>今天不要反复试探弯腰</b>，进度只和昨天同动作比。</p>
   </div>
 
-  <div class="title-row" id="todos">
+  <div class="title-row">
     <h2>今日待办</h2>
   </div>
 
   <div class="ex">
     <div class="ex-top">
-      <div class="kicker">养腰恢复 · 5 项</div>
+      <div class="kicker">恢复 · 不练器械</div>
       <div class="idx">✓</div>
     </div>
     <h3>养腰恢复日</h3>
-    <div class="target">多走动、少卧床 · 不练器械</div>
+    <div class="target">别卧床静养 · 别弯腰提重物 · 别抱孩子</div>
     <ul class="cues">
-      <li>仍在受伤 <b>48 小时内，冰敷</b>；48 小时后可改热敷</li>
-      <li>用药按医生医嘱（依托考昔疗程 3 天），<b>不要和布洛芬叠加</b></li>
-      <li>起身活动可戴护腰带，<b>躺下摘掉</b></li>
+      <li>起身、走动时可戴护腰带，<b>躺下和睡觉时摘掉</b></li>
+      <li>用药：依托考昔按医嘱吃（3 天疗程），<b>不与布洛芬叠加</b></li>
+      <li>今日工作：仍挺痛就请假，不很痛就在家办公，<b>不去办公室</b></li>
     </ul>
     <label class="set"><input type="checkbox"><span class="sname">短距离慢走多次</span><span class="w">每次 5–10 分钟</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">冰敷</span><span class="w">48 小时内</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">避免久坐久站、弯腰提重物、抱孩子</span><span class="w">全天注意</span></label>
+    <label class="set"><input type="checkbox"><span class="sname">冰敷转热敷</span><span class="w">上午约 9 时过节点</span></label>
+    <label class="set"><input type="checkbox"><span class="sname">避免久坐久站、弯腰提重物、抱孩子</span><span class="w">全天</span></label>
     <label class="set"><input type="checkbox"><span class="sname">蛋白吃够</span><span class="w">105–145g</span></label>
-    <label class="set"><input type="checkbox"><span class="sname">23 点前睡觉</span><span class="w">23:00 前</span></label>
+    <label class="set"><input type="checkbox"><span class="sname">23 点前睡觉</span><span class="w">今晚</span></label>
   </div>
 
   <div class="alert">
     <div class="lab">明日预告</div>
-    <p><b>10 月 29 日（周四）· 继续养腰观察</b><br>原定推日已取消；复训等主聊天通知，腰不痛了再议。</p>
+    <p><b>10 月 30 日（周五）· 继续养腰观察</b><br>等主聊天通知再复训，不自动恢复训练卡。</p>
+  </div>
+
+  <div class="metrics">
+    <div class="metric wide">
+      <div class="lab">近4次记录</div>
+      <div class="bars" role="img" aria-label="近4次记录：10月26日拉日362千卡，10月27日腿日腰伤中止无训练消耗，10月28日养腰恢复日，10月29日养腰恢复日">
+        <i style="height:100%" title="10-26 拉 · 362kcal"></i><i style="height:13%" title="10-27 腿 · 腰伤中止"></i><i style="height:13%" title="10-28 养腰恢复"></i><i class="on" style="height:13%" title="10-29 养腰恢复"></i>
+      </div>
+      <div class="bars-lab"><span>26拉</span><span>27腿中止</span><span>28养腰</span><span>29养腰</span></div>
+    </div>
   </div>
 
   <div class="foot">阿呆健身教练 · 每天自动更新</div>
@@ -149,7 +167,7 @@
 
 <script>
 (function(){
-  var KEY='tt-2026-10-28';
+  var KEY='tt-2026-10-29';
   var end=new Date(2026,11,12), now=new Date();
   var days=Math.max(0,Math.ceil((end-now)/864e5));
   document.getElementById('dday').textContent=days;
